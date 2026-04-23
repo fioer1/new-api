@@ -123,8 +123,9 @@ const STYLES = `
   50%     { opacity:.8; transform: translate(8%,6%) scale(1.15) }
 }
 .hp-aurora-orb {
-  position:absolute; border-radius:9999px; filter:blur(90px); pointer-events:none;
+  position:absolute; border-radius:9999px; filter:blur(60px); pointer-events:none;
   animation: hp-aurora 8s ease-in-out infinite;
+  will-change: transform, opacity; transform: translateZ(0);
 }
 .hp-aurora-1 { width:500px;height:500px;top:-12%;left:15%;background:rgba(245,158,11,.12); }
 .hp-aurora-2 { width:400px;height:400px;top:10%;right:10%;background:rgba(251,191,36,.07);animation-delay:-4s;animation-duration:10s; }
@@ -135,7 +136,7 @@ const STYLES = `
   0%,100% { transform: translateY(0) }
   50%     { transform: translateY(-8px) }
 }
-.hp-float { animation: hp-float 5s ease-in-out infinite; }
+.hp-float { animation: hp-float 5s ease-in-out infinite; will-change: transform; }
 
 /* ── CTA shimmer ── */
 @keyframes hp-shimmer {
@@ -171,10 +172,15 @@ const STYLES = `
 .hp-count-pop { animation: hp-count-pop .4s ease-out; }
 
 /* ── dot world map ── */
-@keyframes hp-wdot-dk { 0%{background:#f59e0b;box-shadow:0 0 10px rgba(245,158,11,.8)} 100%{background:#444;box-shadow:0 0 2px rgba(245,158,11,.1)} }
-@keyframes hp-wdot-lt { 0%{background:#f59e0b;box-shadow:0 0 10px rgba(245,158,11,.5)} 100%{background:#ccc;box-shadow:0 0 2px rgba(245,158,11,.05)} }
-.hp-wdot-dark { animation: hp-wdot-dk 4s linear infinite; }
-.hp-wdot-light { animation: hp-wdot-lt 4s linear infinite; }
+@keyframes hp-wdot-dk { 0%{background:#f59e0b} 100%{background:#444} }
+@keyframes hp-wdot-lt { 0%{background:#f59e0b} 100%{background:#ccc} }
+.hp-wdot-dark { animation: hp-wdot-dk 4s linear infinite; contain: strict; will-change: background-color; }
+.hp-wdot-light { animation: hp-wdot-lt 4s linear infinite; contain: strict; will-change: background-color; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-aurora-orb, .hp-float, .hp-wdot-dark, .hp-wdot-light,
+  .hp-marquee-track, .hp-shimmer-btn { animation: none !important; }
+}
 `;
 
 /* ─── data ────────────────────────────────────────────── */
