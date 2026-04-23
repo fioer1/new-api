@@ -461,7 +461,7 @@ const CodeHomePage = ({ status, docsLink, serverAddress, endpointValue }) => {
   const isDark       = actualTheme !== 'light';
   const C            = isDark ? DARK : LIGHT;
   const systemName   = status?.system_name || 'Token吧';
-  const logo         = status?.logo || '/tokenbar-logo.png';
+  const logo         = status?.logo || '/tokenbar-logo.svg';
   const endpointAddr = `${serverAddress}${endpointValue}`;
 
   const [activeTab, setActiveTab]   = useState('Python');
