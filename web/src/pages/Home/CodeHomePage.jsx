@@ -20,13 +20,11 @@ For commercial licensing, please contact support@quantumnous.com
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Activity,
   ArrowRight,
   BadgeCheck,
   Copy,
   Gauge,
   Layers3,
-  Server,
   ShieldCheck,
   Sparkles,
   Zap,
@@ -35,34 +33,34 @@ import { copy, showSuccess } from '../../helpers';
 import { useTranslation } from 'react-i18next';
 
 const metricItems = [
-  { label: '模型接入', value: '30+' },
-  { label: '调度模式', value: 'Smart Pooling' },
-  { label: '运行状态', value: '24 / 7' },
+  { label: '接入模型', value: '30+' },
+  { label: '调度策略', value: 'Smart Pooling' },
+  { label: '服务可用', value: '24 / 7' },
 ];
 
 const capabilityItems = [
   {
     icon: ShieldCheck,
     title: '稳定优先',
-    description: '多账号分层调度与可用性优先策略，尽量把失败留在系统内部。',
+    description: '异常切换、账号分层与可用性优先，让入口看起来始终干净稳定。',
   },
   {
     icon: Layers3,
     title: '统一号池',
-    description: '把账号、渠道、模型入口收敛到一个面板里，减少来回切换。',
+    description: '把账号、渠道和模型入口收敛到一个面板里，前台只保留一个地址。',
   },
   {
-    icon: Server,
-    title: '统一出口',
-    description: '对外只暴露一个兼容地址，把复杂性收在系统里面。',
+    icon: Gauge,
+    title: '挂首页',
+    description: '保留系统原有导航和后台，只把首页改成更像品牌站的第一屏。',
   },
 ];
 
 const endpointHighlights = [
-  '高速',
-  '稳定',
+  'OpenAI Compatible',
+  '统一号池',
   '黑橙主题',
-  '智能调度',
+  '稳定调度',
 ];
 
 const CodeHomePage = ({
@@ -86,27 +84,28 @@ const CodeHomePage = ({
 
   return (
     <div className='relative overflow-hidden bg-[#050505] text-white'>
-      <div className='absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,142,42,0.2),transparent_34%),radial-gradient(circle_at_80%_18%,rgba(255,119,0,0.16),transparent_22%),linear-gradient(180deg,#0a0a0b_0%,#050505_48%,#0a0a0a_100%)]' />
-      <div className='absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:72px_72px]' />
-      <div className='absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black via-black/65 to-transparent' />
+      <div className='absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(255,143,41,0.2),transparent_28%),radial-gradient(circle_at_84%_16%,rgba(255,102,0,0.16),transparent_26%),linear-gradient(180deg,#090909_0%,#040404_55%,#090909_100%)]' />
+      <div className='absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:84px_84px]' />
+      <div className='absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black via-black/70 to-transparent' />
+      <div className='absolute left-1/2 top-24 h-72 w-72 -translate-x-1/2 rounded-full bg-orange-500/10 blur-[120px]' />
 
-      <div className='relative mx-auto max-w-7xl px-4 pb-20 pt-20 sm:px-6 lg:px-8 lg:pt-24'>
-        <section className='grid gap-12 lg:grid-cols-[minmax(0,1.05fr)_480px] lg:items-center'>
-          <div>
-            <div className='inline-flex items-center gap-3 rounded-full border border-orange-500/20 bg-orange-500/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-orange-200'>
+      <div className='relative mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-20'>
+        <section className='grid min-h-[calc(100vh-148px)] gap-12 lg:grid-cols-[minmax(0,1.05fr)_430px] lg:items-center'>
+          <div className='max-w-4xl'>
+            <div className='inline-flex items-center gap-3 rounded-full border border-orange-500/20 bg-orange-500/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-orange-200 shadow-[0_0_40px_rgba(255,122,0,0.08)]'>
               <BadgeCheck className='h-4 w-4' />
-              {systemName}
+              {systemName} Gateway
             </div>
 
-            <div className='mt-7 max-w-4xl'>
-              <h1 className='max-w-4xl text-5xl font-semibold leading-[0.95] tracking-[-0.06em] text-white sm:text-6xl lg:text-7xl'>
-                高速、稳定的
+            <div className='mt-8'>
+              <h1 className='text-5xl font-semibold leading-[0.92] tracking-[-0.065em] text-white sm:text-6xl lg:text-7xl'>
+                一个高速、稳定、统一的
                 <br />
-                号池 API 中转站
+                号池 API 入口
               </h1>
               <p className='mt-6 max-w-2xl text-base leading-8 text-zinc-300 sm:text-lg'>
-                专为开发者和产品接入场景准备，把账号资源、路由调度与统一入口集中到同一个平台。
-                保留系统原有控制台，只把首页改成更像品牌站的样子。
+                首页按挂首页的方式处理，不重新造整站，不动你原有后台结构。
+                只把第一屏改成更接近品牌站的观感，让入口更像产品，而不是默认面板。
               </p>
             </div>
 
@@ -119,10 +118,10 @@ const CodeHomePage = ({
                 <ArrowRight className='h-4 w-4' />
               </Link>
               <Link
-                to='/pricing'
+                to='/login'
                 className='inline-flex items-center gap-2 rounded-full border border-white/14 bg-white/6 px-6 py-3 text-sm font-medium text-white/92 transition-colors duration-200 hover:border-orange-400/40 hover:bg-white/10'
               >
-                查看套餐
+                进入控制台
               </Link>
               {docsLink && (
                 <a
@@ -131,7 +130,7 @@ const CodeHomePage = ({
                   rel='noreferrer'
                   className='inline-flex items-center gap-2 rounded-full px-2 py-3 text-sm text-zinc-300 transition-colors duration-200 hover:text-orange-200'
                 >
-                  文档入口
+                  接口文档
                   <ArrowRight className='h-4 w-4' />
                 </a>
               )}
@@ -164,31 +163,33 @@ const CodeHomePage = ({
           </div>
 
           <div className='relative'>
-            <div className='absolute -right-8 top-10 h-28 w-28 rounded-full bg-orange-500/20 blur-3xl' />
-            <div className='absolute -left-6 bottom-8 h-24 w-24 rounded-full bg-orange-300/10 blur-3xl' />
-            <div className='relative overflow-hidden rounded-[34px] border border-white/10 bg-[#0b0b0d]/90 p-6 shadow-[0_32px_120px_rgba(0,0,0,0.45)]'>
-              <div className='absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,145,53,0.16),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.06),transparent_40%)]' />
+            <div className='absolute -right-10 top-8 h-28 w-28 rounded-full bg-orange-500/20 blur-3xl' />
+            <div className='absolute -left-8 bottom-6 h-24 w-24 rounded-full bg-orange-300/10 blur-3xl' />
+            <div className='relative overflow-hidden rounded-[34px] border border-white/10 bg-[#0b0b0d]/88 p-6 shadow-[0_32px_120px_rgba(0,0,0,0.5)]'>
+              <div className='absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,145,53,0.18),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.06),transparent_42%)]' />
               <div className='relative'>
                 <div className='flex items-center justify-between'>
-                  <div>
-                    <p className='text-xs uppercase tracking-[0.28em] text-zinc-500'>
-                      Live Console
-                    </p>
-                    <h2 className='mt-3 text-2xl font-semibold text-white'>
-                      {systemName}
-                    </h2>
+                  <div className='flex items-center gap-2'>
+                    <span className='h-2.5 w-2.5 rounded-full bg-[#ff7a00]' />
+                    <span className='h-2.5 w-2.5 rounded-full bg-white/25' />
+                    <span className='h-2.5 w-2.5 rounded-full bg-white/15' />
                   </div>
                   <div className='rounded-full border border-orange-400/20 bg-orange-500/10 px-3 py-1 text-xs font-medium text-orange-200'>
                     {version || 'home-page'}
                   </div>
                 </div>
 
-                <div className='mt-8 rounded-[28px] border border-white/8 bg-black/40 p-5'>
+                <div className='mt-7 rounded-[28px] border border-white/8 bg-black/40 p-5'>
                   <div className='flex items-center justify-between gap-4'>
                     <div>
-                      <p className='text-sm text-zinc-400'>平台名称</p>
-                      <p className='mt-2 text-xl font-semibold text-white'>
+                      <p className='text-xs uppercase tracking-[0.28em] text-zinc-500'>
+                        Live Console
+                      </p>
+                      <p className='mt-3 text-2xl font-semibold text-white'>
                         {systemName}
+                      </p>
+                      <p className='mt-2 text-sm text-zinc-400'>
+                        黑橙主题挂首页，后台结构保持不动。
                       </p>
                     </div>
                     <div className='flex h-24 w-24 items-center justify-center rounded-[26px] border border-white/10 bg-white/5 p-4 shadow-[0_0_80px_rgba(255,122,0,0.18)]'>
@@ -219,7 +220,7 @@ const CodeHomePage = ({
                 </div>
 
                 <div className='mt-5 rounded-[28px] border border-white/8 bg-white/[0.04] p-5'>
-                  <div className='flex items-center justify-between gap-3'>
+                  <div className='flex items-start justify-between gap-3'>
                     <div>
                       <p className='text-sm text-zinc-400'>API Base URL</p>
                       <p className='mt-2 break-all text-sm font-medium text-white sm:text-base'>
@@ -234,12 +235,23 @@ const CodeHomePage = ({
                       <Copy className='h-4 w-4' />
                     </button>
                   </div>
+                  <div className='mt-4 flex flex-wrap gap-2'>
+                    <span className='rounded-full border border-white/8 bg-black/25 px-3 py-1 text-xs text-zinc-300'>
+                      统一出口
+                    </span>
+                    <span className='rounded-full border border-white/8 bg-black/25 px-3 py-1 text-xs text-zinc-300'>
+                      兼容接入
+                    </span>
+                    <span className='rounded-full border border-white/8 bg-black/25 px-3 py-1 text-xs text-zinc-300'>
+                      一键复制
+                    </span>
+                  </div>
                 </div>
 
                 <div className='mt-5 grid gap-4 sm:grid-cols-2'>
                   <div className='rounded-[24px] border border-white/8 bg-white/[0.04] p-5'>
                     <div className='flex items-center gap-3 text-orange-200'>
-                      <Activity className='h-5 w-5' />
+                      <Sparkles className='h-5 w-5' />
                       <span className='text-sm font-medium'>Pool Health</span>
                     </div>
                     <div className='mt-4 text-3xl font-semibold text-white'>
@@ -258,7 +270,7 @@ const CodeHomePage = ({
                       Fast
                     </div>
                     <p className='mt-2 text-sm text-zinc-400'>
-                      用更接近品牌站的方式表达系统能力，而不是堆功能说明。
+                      只保留挂首页该有的信息密度，不再堆整站文案。
                     </p>
                   </div>
                 </div>
@@ -267,13 +279,13 @@ const CodeHomePage = ({
           </div>
         </section>
 
-        <section className='mt-16 grid gap-4 md:grid-cols-3'>
+        <section className='grid gap-4 md:grid-cols-3'>
           {capabilityItems.map((item) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.title}
-                className='rounded-[28px] border border-white/10 bg-white/[0.04] p-6'
+                className='rounded-[28px] border border-white/10 bg-white/[0.04] p-6 backdrop-blur'
               >
                 <div className='flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-500/12 text-orange-300'>
                   <Icon className='h-5 w-5' />

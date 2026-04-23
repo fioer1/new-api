@@ -318,6 +318,78 @@ code {
   display: none;
 }
 
+/* ==================== 首页头部深色适配 ==================== */
+.header-home-dark {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.22);
+}
+
+.header-home-dark,
+.header-home-dark .semi-typography,
+.header-home-dark a,
+.header-home-dark span,
+.header-home-dark .semi-button,
+.header-home-dark .semi-button .semi-icon,
+.header-home-dark .semi-badge,
+.header-home-dark .semi-tag,
+.header-home-dark .semi-avatar,
+.header-home-dark .semi-icon {
+  color: #f5f5f5 !important;
+}
+
+.header-home-dark .semi-button {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: none !important;
+}
+
+.header-home-dark .semi-button:hover,
+.header-home-dark .semi-button:focus,
+.header-home-dark .semi-button:active {
+  background: rgba(255, 255, 255, 0.12) !important;
+  color: #ffd4b0 !important;
+}
+
+.header-home-dark .semi-button-primary {
+  background: linear-gradient(135deg, #ffae52 0%, #ff6a00 100%) !important;
+  border-color: transparent !important;
+  color: #120700 !important;
+}
+
+.header-home-dark .semi-button-primary:hover,
+.header-home-dark .semi-button-primary:focus,
+.header-home-dark .semi-button-primary:active {
+  background: linear-gradient(135deg, #ffbc6e 0%, #ff7a16 100%) !important;
+  color: #120700 !important;
+}
+
+.header-home-dark nav a,
+.header-home-dark nav span,
+.header-home-dark .semi-typography {
+  color: #f8fafc !important;
+}
+
+.header-home-dark nav a:hover,
+.header-home-dark nav a:hover span,
+.header-home-dark .group:hover .semi-typography,
+.header-home-dark .group:hover span {
+  color: #ffb162 !important;
+}
+
+.header-home-dark .semi-avatar {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.header-home-dark .semi-badge-count {
+  background: #ff7a00 !important;
+  color: #120700 !important;
+}
+
+.header-home-dark .semi-tag {
+  background: rgba(255, 130, 38, 0.14) !important;
+  border: 1px solid rgba(255, 160, 82, 0.24) !important;
+}
+
 .semi-chat,
 .semi-chat-chatBox,
 .semi-chat-chatBox-wrap,

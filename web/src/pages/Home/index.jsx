@@ -27,6 +27,34 @@ import NoticeModal from '../../components/layout/NoticeModal';
 import { useIsMobile } from '../../hooks/common/useIsMobile';
 import CodeHomePage from './CodeHomePage';
 
+const normalizeServerAddress = (rawAddress) => {
+  const fallback = window.location.origin;
+  if (!rawAddress || typeof rawAddress !== 'string') {
+    return fallback;
+  }
+
+  const trimmedAddress = rawAddress.trim().replace(/\/+$/, '');
+  if (!trimmedAddress) {
+    return fallback;
+  }
+
+  const hasProtocol = /^[a-zA-Z][a-zA-Z\d+\-.]*:\/\//.test(trimmedAddress);
+  const candidate = hasProtocol
+    ? trimmedAddress
+    : `${window.location.protocol}//${trimmedAddress}`;
+
+  try {
+    const parsedUrl = new URL(candidate);
+    const localHosts = new Set(['localhost', '127.0.0.1', '0.0.0.0', '::1']);
+    if (localHosts.has(parsedUrl.hostname)) {
+      return fallback;
+    }
+    return candidate.replace(/\/+$/, '');
+  } catch (error) {
+    return fallback;
+  }
+};
+
 const Home = () => {
   const { i18n } = useTranslation();
   const [statusState] = useContext(StatusContext);
@@ -36,8 +64,9 @@ const Home = () => {
   const [noticeVisible, setNoticeVisible] = useState(false);
   const isMobile = useIsMobile();
   const docsLink = statusState?.status?.docs_link || '';
-  const serverAddress =
-    statusState?.status?.server_address || `${window.location.origin}`;
+  const serverAddress = normalizeServerAddress(
+    statusState?.status?.server_address,
+  );
   const [endpointIndex, setEndpointIndex] = useState(0);
   const endpointValue = API_ENDPOINTS[endpointIndex] || API_ENDPOINTS[0] || '';
   const shouldUseIframeHomePage =
