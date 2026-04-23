@@ -321,7 +321,9 @@ code {
 /* ==================== 首页头部深色适配 ==================== */
 .header-home-dark {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .header-home-dark,
@@ -338,7 +340,7 @@ code {
 }
 
 .header-home-dark .semi-button {
-  background: rgba(255, 255, 255, 0.06) !important;
+  background: #111111 !important;
   border: 1px solid rgba(255, 255, 255, 0.08) !important;
   box-shadow: none !important;
 }
@@ -346,7 +348,7 @@ code {
 .header-home-dark .semi-button:hover,
 .header-home-dark .semi-button:focus,
 .header-home-dark .semi-button:active {
-  background: rgba(255, 255, 255, 0.12) !important;
+  background: #171717 !important;
   color: #ffd4b0 !important;
 }
 
@@ -386,7 +388,7 @@ code {
 }
 
 .header-home-dark .semi-tag {
-  background: rgba(255, 130, 38, 0.14) !important;
+  background: #14100c !important;
   border: 1px solid rgba(255, 160, 82, 0.24) !important;
 }
 

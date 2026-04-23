@@ -84,10 +84,8 @@ const CodeHomePage = ({
 
   return (
     <div className='relative overflow-hidden bg-[#050505] text-white'>
-      <div className='absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(255,143,41,0.2),transparent_28%),radial-gradient(circle_at_84%_16%,rgba(255,102,0,0.16),transparent_26%),linear-gradient(180deg,#090909_0%,#040404_55%,#090909_100%)]' />
-      <div className='absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:84px_84px]' />
-      <div className='absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black via-black/70 to-transparent' />
-      <div className='absolute left-1/2 top-24 h-72 w-72 -translate-x-1/2 rounded-full bg-orange-500/10 blur-[120px]' />
+      <div className='absolute inset-0 bg-[linear-gradient(180deg,#070707_0%,#050505_52%,#080808_100%)]' />
+      <div className='absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-orange-500/25 to-transparent' />
 
       <div className='relative mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-20'>
         <section className='grid min-h-[calc(100vh-148px)] gap-12 lg:grid-cols-[minmax(0,1.05fr)_430px] lg:items-center'>
@@ -151,7 +149,7 @@ const CodeHomePage = ({
               {metricItems.map((item) => (
                 <div
                   key={item.label}
-                  className='rounded-[24px] border border-white/10 bg-white/[0.04] p-5 backdrop-blur'
+                  className='rounded-[24px] border border-white/10 bg-[#0d0d0f] p-5'
                 >
                   <p className='text-sm text-zinc-400'>{item.label}</p>
                   <p className='mt-3 text-2xl font-semibold text-white'>
@@ -163,10 +161,7 @@ const CodeHomePage = ({
           </div>
 
           <div className='relative'>
-            <div className='absolute -right-10 top-8 h-28 w-28 rounded-full bg-orange-500/20 blur-3xl' />
-            <div className='absolute -left-8 bottom-6 h-24 w-24 rounded-full bg-orange-300/10 blur-3xl' />
-            <div className='relative overflow-hidden rounded-[34px] border border-white/10 bg-[#0b0b0d]/88 p-6 shadow-[0_32px_120px_rgba(0,0,0,0.5)]'>
-              <div className='absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,145,53,0.18),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.06),transparent_42%)]' />
+            <div className='relative overflow-hidden rounded-[34px] border border-white/10 bg-[#0b0b0d] p-6 shadow-[0_28px_80px_rgba(0,0,0,0.42)]'>
               <div className='relative'>
                 <div className='flex items-center justify-between'>
                   <div className='flex items-center gap-2'>
@@ -179,7 +174,7 @@ const CodeHomePage = ({
                   </div>
                 </div>
 
-                <div className='mt-7 rounded-[28px] border border-white/8 bg-black/40 p-5'>
+                <div className='mt-7 rounded-[28px] border border-white/8 bg-[#090909] p-5'>
                   <div className='flex items-center justify-between gap-4'>
                     <div>
                       <p className='text-xs uppercase tracking-[0.28em] text-zinc-500'>
@@ -192,7 +187,7 @@ const CodeHomePage = ({
                         黑橙主题挂首页，后台结构保持不动。
                       </p>
                     </div>
-                    <div className='flex h-24 w-24 items-center justify-center rounded-[26px] border border-white/10 bg-white/5 p-4 shadow-[0_0_80px_rgba(255,122,0,0.18)]'>
+                    <div className='flex h-24 w-24 items-center justify-center rounded-[26px] border border-white/10 bg-[#111111] p-4'>
                       <img
                         src={logo}
                         alt={systemName}
@@ -219,7 +214,7 @@ const CodeHomePage = ({
                   </div>
                 </div>
 
-                <div className='mt-5 rounded-[28px] border border-white/8 bg-white/[0.04] p-5'>
+                <div className='mt-5 rounded-[28px] border border-white/8 bg-[#101012] p-5'>
                   <div className='flex items-start justify-between gap-3'>
                     <div>
                       <p className='text-sm text-zinc-400'>API Base URL</p>
@@ -230,26 +225,26 @@ const CodeHomePage = ({
                     <button
                       type='button'
                       onClick={handleCopyBaseURL}
-                      className='inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-black/30 text-zinc-200 transition-colors duration-200 hover:border-orange-400/40 hover:text-orange-200'
+                      className='inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-[#090909] text-zinc-200 transition-colors duration-200 hover:border-orange-400/40 hover:text-orange-200'
                     >
                       <Copy className='h-4 w-4' />
                     </button>
                   </div>
                   <div className='mt-4 flex flex-wrap gap-2'>
-                    <span className='rounded-full border border-white/8 bg-black/25 px-3 py-1 text-xs text-zinc-300'>
+                    <span className='rounded-full border border-white/8 bg-[#090909] px-3 py-1 text-xs text-zinc-300'>
                       统一出口
                     </span>
-                    <span className='rounded-full border border-white/8 bg-black/25 px-3 py-1 text-xs text-zinc-300'>
+                    <span className='rounded-full border border-white/8 bg-[#090909] px-3 py-1 text-xs text-zinc-300'>
                       兼容接入
                     </span>
-                    <span className='rounded-full border border-white/8 bg-black/25 px-3 py-1 text-xs text-zinc-300'>
+                    <span className='rounded-full border border-white/8 bg-[#090909] px-3 py-1 text-xs text-zinc-300'>
                       一键复制
                     </span>
                   </div>
                 </div>
 
                 <div className='mt-5 grid gap-4 sm:grid-cols-2'>
-                  <div className='rounded-[24px] border border-white/8 bg-white/[0.04] p-5'>
+                  <div className='rounded-[24px] border border-white/8 bg-[#101012] p-5'>
                     <div className='flex items-center gap-3 text-orange-200'>
                       <Sparkles className='h-5 w-5' />
                       <span className='text-sm font-medium'>Pool Health</span>
@@ -261,7 +256,7 @@ const CodeHomePage = ({
                       路由熔断、自动切换与状态感知组合运行。
                     </p>
                   </div>
-                  <div className='rounded-[24px] border border-white/8 bg-white/[0.04] p-5'>
+                  <div className='rounded-[24px] border border-white/8 bg-[#101012] p-5'>
                     <div className='flex items-center gap-3 text-orange-200'>
                       <Zap className='h-5 w-5' />
                       <span className='text-sm font-medium'>Routing Speed</span>
@@ -285,7 +280,7 @@ const CodeHomePage = ({
             return (
               <div
                 key={item.title}
-                className='rounded-[28px] border border-white/10 bg-white/[0.04] p-6 backdrop-blur'
+                className='rounded-[28px] border border-white/10 bg-[#0d0d0f] p-6'
               >
                 <div className='flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-500/12 text-orange-300'>
                   <Icon className='h-5 w-5' />
