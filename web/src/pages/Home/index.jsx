@@ -73,22 +73,27 @@ const Home = () => {
     homePageContentLoaded && homePageContent.startsWith('https://');
 
   const displayHomePageContent = async () => {
-    const cachedContent = localStorage.getItem('home_page_content') || '';
-    setHomePageContent(cachedContent);
     try {
       const res = await API.get('/api/home_page_content');
       const { success, message, data } = res.data;
       if (success) {
-        const content = data || '';
-        setHomePageContent(content);
-        localStorage.setItem('home_page_content', content);
+        const content = (data || '').trim();
+        const iframeContent = content.startsWith('https://') ? content : '';
+        setHomePageContent(iframeContent);
+        if (iframeContent) {
+          localStorage.setItem('home_page_content', iframeContent);
+        } else {
+          localStorage.removeItem('home_page_content');
+        }
       } else {
         showError(message);
         setHomePageContent('');
+        localStorage.removeItem('home_page_content');
       }
     } catch (error) {
       showError('加载首页内容失败...');
       setHomePageContent('');
+      localStorage.removeItem('home_page_content');
     }
     setHomePageContentLoaded(true);
   };
