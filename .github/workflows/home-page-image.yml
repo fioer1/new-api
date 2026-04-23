@@ -1,0 +1,69 @@
+name: Publish Home Page Image
+
+on:
+  push:
+    branches:
+      - home-page
+  workflow_dispatch:
+
+concurrency:
+  group: home-page-image-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-push:
+    name: Build and push GHCR image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Prepare image metadata
+        id: prep
+        shell: bash
+        run: |
+          echo "IMAGE_NAME=ghcr.io/${GITHUB_REPOSITORY,,}" >> "$GITHUB_ENV"
+          echo "APP_VERSION=home-page-$(git rev-parse --short HEAD)" >> "$GITHUB_ENV"
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value=home-page
+            type=sha,prefix=home-page-
+          labels: |
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.title=new-api home-page
+            org.opencontainers.image.description=Custom home-page build for tokenbar.org
+
+      - name: Set VERSION file
+        shell: bash
+        run: |
+          printf '%s' "${APP_VERSION}" > VERSION
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
