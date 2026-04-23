@@ -83,9 +83,10 @@ const CodeHomePage = ({
   };
 
   return (
-    <div className='relative overflow-hidden bg-[#050505] text-white'>
-      <div className='absolute inset-0 bg-[linear-gradient(180deg,#070707_0%,#050505_52%,#080808_100%)]' />
-      <div className='absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-orange-500/25 to-transparent' />
+    <div className='relative overflow-hidden bg-[#090909] text-white'>
+      <div className='absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(255,138,31,0.18),transparent_30%),radial-gradient(circle_at_78%_10%,rgba(255,184,107,0.08),transparent_24%),linear-gradient(180deg,#19110b_0%,#0f0e0d_20%,#090909_56%,#0b0b0d_100%)]' />
+      <div className='absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-orange-400/40 to-transparent' />
+      <div className='absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-orange-500/6 to-transparent' />
 
       <div className='relative mx-auto max-w-7xl px-4 pb-16 pt-10 sm:px-6 lg:px-8 lg:pb-20'>
         <section className='grid min-h-[calc(100vh-148px)] gap-12 lg:grid-cols-[minmax(0,1.05fr)_430px] lg:items-center'>
@@ -138,7 +139,7 @@ const CodeHomePage = ({
               {endpointHighlights.map((item) => (
                 <span
                   key={item}
-                  className='rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm text-zinc-200'
+                  className='rounded-full border border-orange-200/10 bg-[#171310] px-4 py-2 text-sm text-zinc-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]'
                 >
                   {item}
                 </span>
@@ -149,7 +150,7 @@ const CodeHomePage = ({
               {metricItems.map((item) => (
                 <div
                   key={item.label}
-                  className='rounded-[24px] border border-white/10 bg-[#0d0d0f] p-5'
+                  className='rounded-[24px] border border-white/10 bg-[linear-gradient(180deg,#171717_0%,#111214_100%)] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]'
                 >
                   <p className='text-sm text-zinc-400'>{item.label}</p>
                   <p className='mt-3 text-2xl font-semibold text-white'>
@@ -161,7 +162,8 @@ const CodeHomePage = ({
           </div>
 
           <div className='relative'>
-            <div className='relative overflow-hidden rounded-[34px] border border-white/10 bg-[#0b0b0d] p-6 shadow-[0_28px_80px_rgba(0,0,0,0.42)]'>
+            <div className='relative overflow-hidden rounded-[34px] border border-orange-200/10 bg-[linear-gradient(180deg,#171311_0%,#111214_42%,#0d0d10_100%)] p-6 shadow-[0_28px_90px_rgba(0,0,0,0.36)]'>
+              <div className='absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-orange-300/45 to-transparent' />
               <div className='relative'>
                 <div className='flex items-center justify-between'>
                   <div className='flex items-center gap-2'>
@@ -169,12 +171,12 @@ const CodeHomePage = ({
                     <span className='h-2.5 w-2.5 rounded-full bg-white/25' />
                     <span className='h-2.5 w-2.5 rounded-full bg-white/15' />
                   </div>
-                  <div className='rounded-full border border-orange-400/20 bg-orange-500/10 px-3 py-1 text-xs font-medium text-orange-200'>
+                  <div className='rounded-full border border-orange-400/20 bg-[#22160e] px-3 py-1 text-xs font-medium text-orange-200'>
                     {version || 'home-page'}
                   </div>
                 </div>
 
-                <div className='mt-7 rounded-[28px] border border-white/8 bg-[#090909] p-5'>
+                <div className='mt-7 rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,#161311_0%,#0f1012_100%)] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]'>
                   <div className='flex items-center justify-between gap-4'>
                     <div>
                       <p className='text-xs uppercase tracking-[0.28em] text-zinc-500'>
@@ -187,7 +189,7 @@ const CodeHomePage = ({
                         黑橙主题挂首页，后台结构保持不动。
                       </p>
                     </div>
-                    <div className='flex h-24 w-24 items-center justify-center rounded-[26px] border border-white/10 bg-[#111111] p-4'>
+                    <div className='flex h-24 w-24 items-center justify-center rounded-[26px] border border-orange-200/10 bg-[linear-gradient(180deg,#1a140f_0%,#121212_100%)] p-4 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]'>
                       <img
                         src={logo}
                         alt={systemName}
@@ -214,7 +216,7 @@ const CodeHomePage = ({
                   </div>
                 </div>
 
-                <div className='mt-5 rounded-[28px] border border-white/8 bg-[#101012] p-5'>
+                <div className='mt-5 rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,#171718_0%,#101012_100%)] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]'>
                   <div className='flex items-start justify-between gap-3'>
                     <div>
                       <p className='text-sm text-zinc-400'>API Base URL</p>
@@ -225,26 +227,26 @@ const CodeHomePage = ({
                     <button
                       type='button'
                       onClick={handleCopyBaseURL}
-                      className='inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-[#090909] text-zinc-200 transition-colors duration-200 hover:border-orange-400/40 hover:text-orange-200'
+                      className='inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/10 bg-[#121212] text-zinc-200 transition-colors duration-200 hover:border-orange-400/40 hover:bg-[#191512] hover:text-orange-200'
                     >
                       <Copy className='h-4 w-4' />
                     </button>
                   </div>
                   <div className='mt-4 flex flex-wrap gap-2'>
-                    <span className='rounded-full border border-white/8 bg-[#090909] px-3 py-1 text-xs text-zinc-300'>
+                    <span className='rounded-full border border-white/8 bg-[#121212] px-3 py-1 text-xs text-zinc-300'>
                       统一出口
                     </span>
-                    <span className='rounded-full border border-white/8 bg-[#090909] px-3 py-1 text-xs text-zinc-300'>
+                    <span className='rounded-full border border-white/8 bg-[#121212] px-3 py-1 text-xs text-zinc-300'>
                       兼容接入
                     </span>
-                    <span className='rounded-full border border-white/8 bg-[#090909] px-3 py-1 text-xs text-zinc-300'>
+                    <span className='rounded-full border border-white/8 bg-[#121212] px-3 py-1 text-xs text-zinc-300'>
                       一键复制
                     </span>
                   </div>
                 </div>
 
                 <div className='mt-5 grid gap-4 sm:grid-cols-2'>
-                  <div className='rounded-[24px] border border-white/8 bg-[#101012] p-5'>
+                  <div className='rounded-[24px] border border-white/8 bg-[linear-gradient(180deg,#171718_0%,#101012_100%)] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]'>
                     <div className='flex items-center gap-3 text-orange-200'>
                       <Sparkles className='h-5 w-5' />
                       <span className='text-sm font-medium'>Pool Health</span>
@@ -256,7 +258,7 @@ const CodeHomePage = ({
                       路由熔断、自动切换与状态感知组合运行。
                     </p>
                   </div>
-                  <div className='rounded-[24px] border border-white/8 bg-[#101012] p-5'>
+                  <div className='rounded-[24px] border border-white/8 bg-[linear-gradient(180deg,#171718_0%,#101012_100%)] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]'>
                     <div className='flex items-center gap-3 text-orange-200'>
                       <Zap className='h-5 w-5' />
                       <span className='text-sm font-medium'>Routing Speed</span>
@@ -280,7 +282,7 @@ const CodeHomePage = ({
             return (
               <div
                 key={item.title}
-                className='rounded-[28px] border border-white/10 bg-[#0d0d0f] p-6'
+                className='rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,#171718_0%,#101012_100%)] p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]'
               >
                 <div className='flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-500/12 text-orange-300'>
                   <Icon className='h-5 w-5' />
