@@ -18,6 +18,8 @@ For commercial licensing, please contact support@quantumnous.com
 */
 
 import React from 'react';
+import { useLocation } from 'react-router-dom';
+import { useActualTheme } from '../../../context/Theme';
 import { useHeaderBar } from '../../../hooks/common/useHeaderBar';
 import { useNotifications } from '../../../hooks/common/useNotifications';
 import { useNavigation } from '../../../hooks/common/useNavigation';
@@ -28,6 +30,9 @@ import Navigation from './Navigation';
 import ActionButtons from './ActionButtons';
 
 const HeaderBar = ({ onMobileMenuToggle, drawerOpen }) => {
+  const { pathname } = useLocation();
+  const actualTheme = useActualTheme();
+  const isHome = pathname === '/' && actualTheme !== 'light';
   const {
     userState,
     statusState,
@@ -66,7 +71,7 @@ const HeaderBar = ({ onMobileMenuToggle, drawerOpen }) => {
 
   return (
     <header
-      className='text-semi-color-text-0 sticky top-0 z-50 transition-colors duration-300 bg-white/75 dark:bg-zinc-900/75 backdrop-blur-lg'
+      className={`text-semi-color-text-0 sticky top-0 z-50 transition-colors duration-300 ${isHome ? 'header-home-dark bg-zinc-950/80 backdrop-blur-md' : 'bg-white/75 dark:bg-zinc-900/75 backdrop-blur-lg'}`}
     >
       <NoticeModal
         visible={noticeVisible}

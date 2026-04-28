@@ -44,24 +44,18 @@ const HeaderLogo = ({
         <img
           src={logo}
           alt='logo'
-          className={`absolute inset-0 w-full h-full transition-all duration-200 group-hover:scale-110 rounded-full ${!isLoading && logoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 w-full h-full transition-all duration-200 group-hover:scale-110 rounded-full ${logoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => {}}
         />
       </div>
       <div className='hidden md:flex items-center gap-2'>
         <div className='flex items-center gap-2'>
-          <SkeletonWrapper
-            loading={isLoading}
-            type='title'
-            width={120}
-            height={24}
+          <Typography.Title
+            heading={4}
+            className='!text-lg !font-semibold !mb-0'
           >
-            <Typography.Title
-              heading={4}
-              className='!text-lg !font-semibold !mb-0'
-            >
-              {systemName}
-            </Typography.Title>
-          </SkeletonWrapper>
+            {systemName || 'Token吧'}
+          </Typography.Title>
           {(isSelfUseMode || isDemoSiteMode) && !isLoading && (
             <Tag
               color={isSelfUseMode ? 'purple' : 'blue'}
