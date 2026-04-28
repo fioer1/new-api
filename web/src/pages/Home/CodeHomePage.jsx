@@ -194,7 +194,7 @@ const MODELS = [
   { name: 'Doubao',   color: '#0066ff' },
   { name: 'Zhipu',    color: '#3b82f6' },
   { name: 'Mistral',  color: '#f97316' },
-  { name: 'Grok',     color: '#fff' },
+  { name: 'Grok',     color: '#1a1a1a' },
 ];
 
 const CODE_TABS = ['Python', 'Node.js', 'cURL'];
@@ -463,6 +463,7 @@ const CodeHomePage = ({ status, docsLink, serverAddress, endpointValue }) => {
   const systemName   = status?.system_name || 'Token吧';
   const logo         = status?.logo || '/tokenbar-logo.svg';
   const endpointAddr = `${serverAddress}${endpointValue}`;
+  const anthropicAddr = `${serverAddress}/anthropic`;
 
   const [activeTab, setActiveTab]   = useState('Python');
   const [copied,    setCopied]      = useState(false);
@@ -800,7 +801,7 @@ const CodeHomePage = ({ status, docsLink, serverAddress, endpointValue }) => {
                 <div>
                   <span style={{ color: '#c792ea' }}>export</span>
                   <span style={{ color: '#cdd3de' }}> ANTHROPIC_BASE_URL=</span>
-                  <span style={{ color: '#c3e88d' }}>https://api.tokenbar.org/anthropic</span>
+                  <span style={{ color: '#c3e88d' }}>{anthropicAddr}</span>
                 </div>
                 <div>
                   <span style={{ color: '#c792ea' }}>export</span>
